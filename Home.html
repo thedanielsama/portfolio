@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daniel Sama | PORTFÓLIO</title>
+	<link rel="icon" href="imagens/Logo Daniel Sama Branca Amarela.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Montserrat', sans-serif;
+        background: url('imagens/Fundo Site.png') no-repeat center center fixed;
+        background-size: cover;
+		background-color: #131313;
+		color: #fff;
+      }
+      .top-bar {
+	    display: flex;
+		align-items: center;
+		gap: 10px;
+        background-color: transparent;
+        padding: 20px 30px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #d4af37;
+        text-align: left;
+        border-bottom: 1px solid #d4af37;
+      }
+	  .top-bar img.logo {
+		height: 60px; /* ou ajuste para o tamanho que quiser */
+		width: auto;
+		border-radius: 8px; /* Opcional: bordas arredondadas se quiser deixar bonito */
+	  }
+      nav {
+        position: fixed;
+        top: 30px;
+        right: 30px;
+        background-color: #1b1b1b;
+        padding: 10px 20px;
+        border-radius: 30px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        z-index: 1000;
+        display: flex;
+        gap: 15px;
+      }
+      a {
+        color: #d4af37;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+      nav a {
+        color: #d4af37;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 16px;
+        transition: color 0.3s;
+      }
+      nav a:hover {
+        color: white;
+      }
+      main {
+		background-color: #222;
+        max-width: 1200px;
+        margin: 80px auto 40px auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 30px;
+        border-radius: 20px;
+      }
+	  img {
+        pointer-events: none;
+        user-select: none;
+      }
+      .post {
+        background-color: #2a2a2a;
+        border: 2px solid #d4af37;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        position: relative;
+        transition: transform 0.3s, box-shadow 0.3s;
+        overflow: hidden;
+      }
+      .post:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0,0,0,0.5);
+      }
+      .post::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -75%;
+        width: 50%;
+        height: 100%;
+        background: linear-gradient(120deg, rgba(212, 175, 55, 0.3) 0%, rgba(255, 255, 255, 0.1) 100%);
+        transform: skewX(-25deg);
+        transition: left 0.7s ease;
+      }
+      .post:hover::after {
+        left: 125%;
+      }
+      .post img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+        display: block;
+      }
+      .post-title {
+	text-align: center;
+        padding: 15px;
+        font-size: 20px;
+        color: #d4af37;
+      }
+      section {
+        max-width: 800px;
+        margin: 80px auto 40px auto;
+        padding: 0 20px;
+        text-align: center;
+      }
+      #sobre {
+        background-color: #252525;
+        border-radius: 20px;
+        padding: 40px 20px;
+      }
+      #contato {
+        background-color: #2f2f2f;
+        border-radius: 20px;
+        padding: 40px 20px;
+      }
+      section h2 {
+        color: #d4af37;
+        margin-bottom: 20px;
+      }
+      .divider {
+        width: 100%;
+        height: 1px;
+        background-color: #d4af37;
+        margin: 60px 0;
+      }
+      .about img {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-bottom: 20px;
+      }
+      .skills {
+        margin-top: 20px;
+        text-align: left;
+      }
+      .skill {
+        margin-bottom: 15px;
+      }
+      .skill-name {
+        margin-bottom: 5px;
+      }
+      .skill-bar {
+        background-color: #555;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      .skill-bar-fill {
+        height: 10px;
+        background-color: #d4af37;
+        width: 0;
+        animation: fillSkill 2s forwards;
+      }
+      @keyframes fillSkill {
+        from { width: 0; }
+        to { width: var(--fill); }
+      }
+      .contact-links {
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+      }
+      .contact-links a {
+        color: #d4af37;
+        text-decoration: none;
+        font-size: 16px;
+      }
+      .social-icons {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+      }
+      .social-icons a {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+      }
+      .social-icons svg {
+        width: 100%;
+        height: 100%;
+        fill: #d4af37;
+        transition: fill 0.3s;
+      }
+      .social-icons svg:hover {
+        fill: white;
+      }
+      footer {
+        margin-top: 80px;
+        padding: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #d4af37;
+      }
+      #topButton {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background: none;
+        border: none;
+        color: #d4af37;
+        font-size: 32px;
+        cursor: pointer;
+        z-index: 999;
+        transition: color 0.3s;
+      }
+      #topButton:hover {
+        color: white;
+      }
+      @media (max-width: 600px) {
+        nav {
+          top: 10px;
+          right: 10px;
+          padding: 8px 15px;
+        }
+        nav a {
+          font-size: 14px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="top-bar">
+		<img src="imagens/Logo Daniel Sama Branca Amarela.png" alt="Logo Daniel Sama" class="logo" draggable="false">
+		<span><a href="home.html">Daniel Sama | PORTFÓLIO</a></span>
+	</div>
+
+    <nav>
+      <a href="#portfolio">Portfólio</a>
+      <a href="#sobre">Sobre</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <main id="portfolio">
+      <div class="post">
+	<a href="post1.html">
+        <img src="imagens/post1/zenon - banner finalizado.png" alt="Thumb do projeto">
+	</a>
+        <div class="post-title">Ilustração e Modelagem 3D - Zenon - Forgotten Havens</div>
+      </div>
+
+      <div class="post">
+	<a href="post2.html">
+        <img src="imagens/post2/Para Casa 44 - Personagem Forgotten Havens8.png" alt="Thumb do projeto">
+	</a>
+        <div class="post-title">Character Design - Forgotten Havens</div>
+      </div>
+      
+      <div class="post">
+	<a href="post3.html">
+        <img src="imagens/post3/Pagina Ilustrações 2.png" alt="Thumb do projeto">
+	</a>
+        <div class="post-title">Ilustrações</div>
+      </div>
+
+      <div class="post">
+	<a href="post4.html">
+        <img src="imagens/post4/titulo.png" alt="Thumb do projeto">
+	</a>
+        <div class="post-title">Identidade Visual - Caverna do Negaum</div>
+      </div>
+
+      <div class="post">
+	<a href="post5.html">
+        <img src="imagens/post5/Página Além da Teoria.png" alt="Thumb do projeto">
+	</a>
+        <div class="post-title">Identidade Visual - Além da Teoria</div>
+      </div>
+
+      <div class="post">
+	<a href="post6.html">
+        <img src="imagens/post6/capa.jpg" alt="Thumb do projeto">
+	</a>
+        <div class="post-title">Livro Infantil - Blue - O passarinho sem perna</div>
+      </div>
+      
+      <div class="post">
+	<a href="post7.html">
+        <img src="imagens/post7/capa.png" alt="Thumb do projeto">
+	</a>
+        <div class="post-title">Identidade Visual - Gabriel Zacarias - Personal Trainer</div>
+      </div>
+
+      <div class="post">
+	<a href="post8.html">
+        <img src="imagens/post8/capa projeto - karin joias.png" alt="Thumb do projeto">
+	</a>
+        <div class="post-title">Social Media Posts - Karin Joias</div>
+      </div>
+	  <div class="post">
+	<a href="post9.html">
+        <img src="imagens/post9/Capa Projeto - Big Buruguer.png" alt="Thumb do projeto">
+	</a>
+        <div class="post-title">Social Media Posts - Big Buruguer</div>
+      </div>
+    </main>
+
+    <div class="divider"></div>
+
+    <section class="about" id="sobre">
+      <img src="imagens\avatar.png" alt="Daniel Sama" draggable="false">
+      <h2>SOBRE MIM</h2>
+      <p>Designer, Ilustrador, Modelador 3D e Editor de Vídeo freelancer com experiência em desenvolver identidade visual para produtos e marcas, concepção de cenários e personagens em 3D, animações 2D, motion design e ilustrações para diversas finalidades como quadrinhos e produtos personalizados. Também atuo na criação de peças para redes sociais, flyers, folders, banners e materiais para eventos.</p>
+      <div class="skills">
+        <div class="skill">
+          <div class="skill-name">Photoshop</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 90%;"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">ClipStudio Paint</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 90%;"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">Illustrator</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 80%;"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">Premiere</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 80%;"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">After Effects</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 80%;"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">Blender</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 70%;"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">InDesign</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 60%;"></div></div>
+        </div>
+        <div class="skill">
+          <div class="skill-name">Pacote Office</div>
+          <div class="skill-bar"><div class="skill-bar-fill" style="--fill: 60%;"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <section class="contact" id="contato">
+      <h2>CONTATO</h2>
+      <div class="contact-links">
+        <a href="mailto:daniel_evangelista2006@hotmail.com">Email: daniel_evangelista2006@hotmail.com</a>
+        <a href="tel:+5581992350885">Telefone: (81) 99235-0885</a>
+        <a href="https://wa.me/5581992350885" target="_blank">WhatsApp: Clique aqui</a>
+      </div>
+      <div class="social-icons">
+    <a href="https://www.instagram.com/tdanielsama" target="_blank">
+    		<img src="imagens/instagram.png" alt="Instagram" width="35" height="35">
+  	</a>
+  	<a href="https://x.com/tdanielsama" target="_blank">
+    		<img src="imagens/twitter.png" alt="Twitter" width="35" height="35">
+  	</a>
+  	<a href="https://www.behance.net/tdanielsama" target="_blank">
+    		<img src="imagens/behance.png" alt="Behance" width="35" height="35">
+	</a>
+  	<a href="https://www.youtube.com/thedanielsama" target="_blank">
+    		<img src="imagens/youtube.png" alt="YouTube" width="35" height="35">
+  	</a>
+  	<a href="https://www.twitch.tv/tdanielsama" target="_blank">
+    		<img src="imagens/twitch.png" alt="Twitch" width="35" height="35">
+  	</a>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <footer>
+      © 2025 Daniel Sama. Todos os direitos reservados.
+    </footer>
+
+    <button id="topButton" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">&#8679;</button>
+  <script>
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  });
+  </script>
+  </body>
+</html>
